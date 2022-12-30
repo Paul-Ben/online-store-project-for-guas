@@ -90,8 +90,16 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								@guest
+								<li><a href="{{route('login')}}"><i class="fa fa-user"></i> Login</a></li>
+								<li><a href="{{route('register')}}"><i class="fa fa-star"></i> Register</a></li>
+								@endguest
+								@auth
+								<li><a href="#"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+								<li><a href="{{route('myOrder')}}"><i class="fa fa-crosshairs"></i> My Orders</a></li>
+								<li><a href="{{route('showCart')}}"><i class="fa fa-shopping-cart"></i> Cart({{ $count }})</a></li>
+								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+								@endauth
 								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li> -->

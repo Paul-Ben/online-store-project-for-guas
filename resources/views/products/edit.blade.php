@@ -61,9 +61,22 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
                 <div class="form-group">
+                    <strong>Product Availability:</strong>
+                    <select class="form-control" name="product_stock" aria-label="Default select example" required>
+                        <option value="{{$product->product_stock}}" selected>{{$product->product_stock}}</option>
+                        <option value="In Stock">Available in Stock</option>
+                        <option value="Out of Stock">Out of Stock</option>
+                        </select>
+                    @error('product_stock')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
                     <strong>Add to Featured Products:</strong>
                     <select class="form-control" name="featured_product" aria-label="Default select example"  required>
-                        <option selected>{{$product->featured_product}}</option>
+                        <option value="{{$product->featured_product}}" selected>{{$product->featured_product}}</option>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                         </select>
@@ -76,7 +89,7 @@
                 <div class="form-group">
                     <strong>Add to Recommended :</strong>
                     <select class="form-control" name="recommended_product" aria-label="Default select example" required>
-                        <option selected>{{$product->recommended_product}}</option>
+                        <option value="{{$product->recommended_product}}" selected>{{$product->recommended_product}}</option>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                         </select>
@@ -89,7 +102,7 @@
                 <div class="form-group">
                     <strong>Add to Products on Sale:</strong>
                     <select class="form-control" name="on_sale" aria-label="Default select example"  required>
-                        <option selected>{{$product->on_sale}}</option>
+                        <option value="{{$product->on_sale}}" selected>{{$product->on_sale}}</option>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                         </select>
@@ -98,13 +111,34 @@
                     @enderror
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <strong>Sale Price:</strong>
+                    <input type="text" name="sale_price" class="form-control" value="{{$product->sale_price}}" placeholder="Sale Price" pattern="[0-9]" required>
+                    @error('sale_price')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Product Image</label>
+                    <input type="file" class="form-control" id="exampleFormControlFile1" value="{{$product->product_image}}" name="product_image">
+                    
+                  </div>
+                </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <strong>Product Description:</strong>
+                    {{-- <input type="text" name="description" class="form-control" value="{{$product->description}}" placeholder="Product Description" required> --}}
+                    <textarea name="description" class="from-control" id="" cols="35" rows="5">{{$product->description}}</textarea>
+                    @error('description')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
             
-            
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Product Image</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" value="{{$product->product_image}}" name="product_image">
-                
-              </div>
+           
             <div>
             <button type="submit" class="btn btn-primary ml-3">Submit</button>
         </div>

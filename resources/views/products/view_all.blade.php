@@ -22,9 +22,10 @@
             <tr>
                 {{-- <th>S.No</th> --}}
                 <th>Product</th>
-                <th>Product Name</th>
+                <th>Name</th>
                 <th>Product Id</th>
                 <th>Category</th>
+                <th>Availability</th>
                 <th>Price (NGN)</th>
                 <th>Featured</th>
                 <th>On Sale</th>
@@ -37,10 +38,11 @@
                 <tr>
                     
                     {{-- <td>{{ $fee->id }}</td> --}}
-                    <td><img src="{{ asset($product->product_image) }}" alt="" width="120%" height="120%"></td>
+                    <td><img src="{{ asset($product->product_image) }}" alt="" width="80%" height="80%"></td>
                     <td>{{ $product->product_name}}</td>
                     <td>{{ $product->product_id}}</td>
                     <td>{{ $product->product_category}}</td>
+                    <td>{{ $product->product_stock}}</td>
                     <td>{{ $product->product_price}}</td>
                     <td>{{ $product->featured_product}}</td>
                     <td>{{ $product->on_sale}}</td>

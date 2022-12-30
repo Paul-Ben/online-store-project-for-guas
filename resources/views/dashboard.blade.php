@@ -147,10 +147,15 @@
                         <li> <a class="waves-effect waves-dark" href="{{route('categories.index')}}" aria-expanded="false"><i
                                     class="fa fa-table"></i><span class="hide-menu">Categories</span></a>
                         </li>
-                        
+                        <li> <a class="waves-effect waves-dark" href="{{route('orders')}}" aria-expanded="false"><i
+                            class="fa fa-table"></i><span class="hide-menu">Orders</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{{route('contact.index')}}" aria-expanded="false"><i
+                            class="fa fa-table"></i><span class="hide-menu">Messages</span></a>
+                        </li>
                     </ul>
                     <div class="text-center mt-4">
-                        <a href="https://www.gearuparcheryshop.com"
+                        <a href="{{route('home')}}"
                             class="btn waves-effect waves-light btn-info hidden-md-down text-white"> GearUp</a>
                     </div>
                 </nav>
@@ -181,7 +186,7 @@
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center">
-                        <a href="https://www.gearuparcheryshop.com"
+                        <a href="{{route('home')}}"
                             class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down text-white">GearUp</a>
                     </div>
                 </div>
@@ -195,6 +200,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                    
                                 @yield('content')
                                 
                             </div>

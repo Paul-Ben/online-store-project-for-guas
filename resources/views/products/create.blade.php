@@ -54,12 +54,24 @@
                     @enderror
                 </div>
             </div>
-        
             <div class="col-xs-12 col-sm-12 col-md-4">
                 <div class="form-group">
                     <strong>Product Price:</strong>
-                    <input type="text" name="product_price" class="form-control" placeholder="Product price" required>
+                    <input type="text" name="product_price" class="form-control" placeholder="Product price" required pattern="[0-9]{2,}">
                     @error('product_price')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <strong>Product Availability:</strong>
+                    <select class="form-control" name="product_stock" aria-label="Default select example" required>
+                        <option selected>Select Availability</option>
+                        <option value="In Stock">Available in Stock</option>
+                        <option value="Out of Stock">Out of Stock</option>
+                        </select>
+                    @error('product_stock')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
@@ -106,19 +118,39 @@
             <div class="col-xs-12 col-sm-12 col-md-4">
                 <div class="form-group">
                     <strong>Sale Price:</strong>
-                    <input type="text" name="sale_price" class="form-control" placeholder="Sale Price" required>
+                    <input type="text" name="sale_price" class="form-control" placeholder="Sale Price" pattern="[0-9]" required>
                     @error('sale_price')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
+            {{-- <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <strong>Product Description:</strong>
+                    <input type="text" name="description" class="form-control" placeholder="Product Description" required>
+                    @error('description')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div> --}}
+
             
-            
+            <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="form-group">
                 <label for="exampleFormControlFile1">Product Image</label>
                 <input type="file" class="form-control" id="exampleFormControlFile1" name="product_image">
                 
               </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group">
+                    <strong>Product Description:</strong>
+                    <textarea name="description" class="from-control" placeholder="Item Description" id="" cols="35" rows="5"></textarea>
+                    @error('description')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
             <div>
             <button type="submit" class="btn btn-primary ml-3">Submit</button>
         </div>

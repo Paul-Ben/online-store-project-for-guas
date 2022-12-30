@@ -7,30 +7,38 @@
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Category</h2>
+                    
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        @foreach ($categories as $category)
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                    
+
+                                    <a data-toggle="collapse" data-parent="#accordian" href="">
                                         <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                        Arrows
+                                        <a href="{{route('categoryProducts', $category->id)}}">{{$category->category_name}}|</a>
+                                        
                                     </a>
+                                    
                                 </h4>
+                               
                             </div>
-                            <div id="sportswear" class="panel-collapse collapse">
+                            {{-- <div id="sportswear" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Alluminium </a></li>
+                                        <li><a href="product_details/aluminium-arrow.html">Alluminium </a></li>
                                         <li><a href="#">Arrow Accessories </a></li>
-                                        <li><a href="#">Carbon </a></li>
-                                        <li><a href="#">Fiber Glass </a></li>
-                                        <li><a href="#">Wooden</a></li>
+                                        <li><a href="product_details/carbon-aluminium-arrow.html">Carbon </a></li>
+                                        <li><a href="product_details/fiberglass-arrow.html">Fiber Glass </a></li>
+                                        <li><a href="product_details/wooden-arrow.html">Wooden</a></li>
                                         
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
+                             
                         </div>
-                        <div class="panel panel-default">
+                        {{-- <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordian" href="#mens">
@@ -42,9 +50,9 @@
                             <div id="mens" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Compound</a></li>
-                                        <li><a href="#">Cross Bows</a></li>
-                                        <li><a href="#">Hunting Bows</a></li>
+                                        <li><a href="product_details/compound-bow.html">Compound</a></li>
+                                        <li><a href="product_details/newcross-bow.html">Cross Bows</a></li>
+                                        <li><a href="product-details/recurve-bow.html">Hunting Bows</a></li>
                                         <li><a href="#">Bow Accessories</a></li>
                                         
                                     </ul>
@@ -64,9 +72,9 @@
                             <div id="womens" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <ul>
-                                        <li><a href="#">Buttress</a></li>
-                                        <li><a href="#">Target Paper</a></li>
-                                        <li><a href="#">Target Stand</a></li>
+                                        <li><a href="product_details/buttress.html">Buttress</a></li>
+                                        <li><a href="product_details/target-paper.html">Target Paper</a></li>
+                                        <li><a href="product_details/target-stand.html">Target Stand</a></li>
                                         <li><a href="#">Others</a></li>
                                         
                                     </ul>
@@ -77,9 +85,9 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title"><a href="#">Others</a></h4>
                             </div>
-                        </div>
+                        </div> --}}
                         
-                        
+                        @endforeach
                     </div><!--/category-products-->
                 
                     <div class="brands_products"><!--brands_products-->
@@ -114,10 +122,17 @@
             
             <div class="col-sm-9 padding-right">
                 <div class="product-details"><!--product-details-->
+                    <h2 class="title text-center">Products Details</h2>
+                    @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">X</button>
+                        <p>{{ session()->get('message') }}</p>
+                    </div>
+                @endif
                     <div class="col-sm-5">
                         <div class="view-product">
                             <img src="{{asset($featured->product_image)}}" alt="" />
-                            <h3>Aluminium Arrow</h3>
+                            <h3>{{$featured->product_name}}</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
                             
@@ -127,23 +142,31 @@
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
-                            <img src="{{asset($featured->product_image)}}" class="newarrival" alt="" />
+                            {{-- <img src="{{asset($featured->product_image)}}" class="newarrival" alt="" /> --}}
                             <h2>{{$featured->product_name}}</h2>
                             <p>Web ID: {{$featured->product_id}}</p>
                             <img src="../images/product-details/rating.png" alt="" />
+
+                            <form action="{{route('addcart', $featured->id)}}" method="POST">
+                                @csrf
                             <span>
-                                <span>US $59</span>
+                                <span>NGN {{number_format($featured->product_price)}}</span>
                                 <label>Quantity:</label>
-                                <input type="text" value="1" />
-                                <button type="button" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <a href="#details">Buy Now</a>
-                                </button>
+                                <input type="number" name="purchase_quantity" value="1" min="1" />
+                           
                             </span>
-                            <p><b>Availability:</b> In Stock</p>
+                            <div class="mb-3">
+
+                            <i class="fa fa-shopping-cart">
+                            <input class="btn" type="submit" style="color: white; background:green; border:none" value="Add to Cart">
+                            </i>
+                            </div>
+                            </form><br>
+                            <p><b>Availability:</b> {{$featured->product_stock}}</p>
                             <p><b>Condition:</b> New</p>
-                            <p><b>Brand:</b> Aluminium Arrow</p>
-                            <!-- <a href=""><img src="../images/product-details/share.png" class="share img-responsive"  alt="" /></a> -->
+                            <p><b>Brand:</b> {{$featured->product_name}}</p>
+                            <p><b>Description:</b> {{$featured->description}}</p>
+                            
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->

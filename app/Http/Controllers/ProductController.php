@@ -116,8 +116,8 @@ class ProductController extends Controller
             'product_id' => 'required',
             'product_category' => 'required',
             'featured_product' => 'required',
-            'recommended_product' => 'required',
-            'on_sale' => 'required'
+            
+            
         ]);
 
         $product->fill($request->post())->save();

@@ -23,11 +23,16 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+										
+	
+										<a data-toggle="collapse" data-parent="#accordian" href="">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											{{$category->category_name}}
+											<a href="{{route('categoryProducts', $category->id)}}">{{$category->category_name}}|</a>
+											
 										</a>
+										
 									</h4>
+								   
 								</div>
 								{{-- <div id="sportswear" class="panel-collapse collapse">
 									<div class="panel-body">
@@ -41,6 +46,7 @@
 										</ul>
 									</div>
 								</div> --}}
+								 
 							</div>
 							{{-- <div class="panel panel-default">
 								<div class="panel-heading">
@@ -135,22 +141,22 @@
 										<img src="{{asset($product->product_image)}}" width="80" height="180" alt="" />
 										<h2>NGN{{ $product->product_price }}</h2>
 										<p>{{$product->product_name}}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+										<a href="{{route('product_details', $product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>NGN{{ $product->product_price }}</h2>
 											<p>{{$product->product_name}}</p>
-											<a href="recurve-bow.html" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View</a>
+											<a href="{{route('product_details', $product->id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View</a>
 										</div>
 									</div>
 								</div>
-								<div class="choose">
+								{{-- <div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="{{route('addcart', $product->id)}}"><i class="fa fa-plus-square"></i>Add to Cart</a></li>
 										<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
 									</ul>
-								</div>
+								</div> --}}
 							</div>
 						</div>
 						@endforeach
