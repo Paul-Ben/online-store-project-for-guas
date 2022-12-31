@@ -7,6 +7,12 @@
     <p>{{ session()->get('message') }}</p>
 </div>
 @endif
+@if (session()->has('error'))
+<div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert">X</button>
+    <p>{{ session()->get('error') }}</p>
+</div>
+@endif
 
 <section id="cart_items">
     <div class="container">
@@ -164,7 +170,7 @@
                         <li>Total <span>NGN {{number_format($totalPrice)}}</span></li>
                     </ul>
                         <a class="btn btn-default update" href="{{route('cash_order')}}">Cash on Delivery</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        <a class="btn btn-default check_out" href="{{route('cardPay',$totalPrice)}}">Check Out</a>
                 </div>
             </div>
         </div>

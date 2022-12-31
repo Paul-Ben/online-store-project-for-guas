@@ -26,6 +26,7 @@
                 <th>Product Id</th>
                 <th>Category</th>
                 <th>Availability</th>
+                <th>Qty</th>
                 <th>Price (NGN)</th>
                 <th>Featured</th>
                 <th>On Sale</th>
@@ -43,6 +44,7 @@
                     <td>{{ $product->product_id}}</td>
                     <td>{{ $product->product_category}}</td>
                     <td>{{ $product->product_stock}}</td>
+                    <td>{{ $product->stock}}</td>
                     <td>{{ $product->product_price}}</td>
                     <td>{{ $product->featured_product}}</td>
                     <td>{{ $product->on_sale}}</td>

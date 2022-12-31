@@ -163,6 +163,7 @@
                             </div>
                             </form><br>
                             <p><b>Availability:</b> {{$featured->product_stock}}</p>
+                            <p><b>Quantity:</b> {{$featured->stock}}</p>
                             <p><b>Condition:</b> New</p>
                             <p><b>Brand:</b> {{$featured->product_name}}</p>
                             <p><b>Description:</b> {{$featured->description}}</p>

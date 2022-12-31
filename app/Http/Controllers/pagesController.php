@@ -94,7 +94,7 @@ class pagesController extends Controller
     public function orders()
     {
         $orders = Order::orderBy('id', 'desc')->paginate(10);
-        //   dd($orders);
+        
         return view('pages.orderlist', compact('orders'));
     }
 
@@ -108,7 +108,7 @@ class pagesController extends Controller
     public function editOrder(Request $request, Order $order)
     {
         $order = Order::where('id', $request->id)->first();
-        // dd($order);
+        
         return view('pages.editOrder', compact('order'));
     }
 

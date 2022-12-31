@@ -72,6 +72,8 @@ Route::get('all_categories', [CategoryController::class, 'show_all'])->name('all
 Route::post('addcart/{id}', [CartController::class, 'store'])->name('addcart');
 Route::get('showCart', [CartController::class, 'show'])->name('showCart');
 Route::get('cash_order', [CartController::class, 'cash_order'])->name('cash_order');
+Route::get('pay_callback', [CartController::class, 'pay_callback'])->name('pay_callback');
+Route::get('cardPay/{totalPrice}', [CartController::class, 'cardPay'])->name('cardPay');
 Route::resource('cart', CartController::class);
 
 Route::resource('contact', ContactController::class);

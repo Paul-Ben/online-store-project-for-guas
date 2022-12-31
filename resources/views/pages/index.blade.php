@@ -178,7 +178,7 @@
                     </div><!--/price-range-->
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
+                        <img src="{{asset('assets/images/home/Shipit.png')}}" width="100%" height="100%" alt="" />
                     </div><!--/shipping-->
                 
                 </div>

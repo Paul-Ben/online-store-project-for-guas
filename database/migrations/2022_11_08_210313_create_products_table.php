@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('product_price');
             $table->string('product_image');
             $table->string('product_stock');
+            $table->integer('stock');
             $table->boolean('featured_product')->nullable();
             $table->boolean('recommended_product')->nullable();
             $table->boolean('on_sale')->nullable();
