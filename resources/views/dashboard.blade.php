@@ -150,6 +150,9 @@
                         <li> <a class="waves-effect waves-dark" href="{{route('orders')}}" aria-expanded="false"><i
                             class="fa fa-table"></i><span class="hide-menu">Orders</span></a>
                         </li>
+                        <li> <a class="waves-effect waves-dark" href="{{route('closedOrders')}}" aria-expanded="false"><i
+                            class="fa fa-table"></i><span class="hide-menu">Closed Orders</span></a>
+                        </li>
                         <li> <a class="waves-effect waves-dark" href="{{route('contact.index')}}" aria-expanded="false"><i
                             class="fa fa-table"></i><span class="hide-menu">Messages</span></a>
                         </li>

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\ClosedOrder;
 use Session;
 
 class pagesController extends Controller
@@ -98,6 +99,13 @@ class pagesController extends Controller
         return view('pages.orderlist', compact('orders'));
     }
 
+    public function closedOrders()
+    {
+        $closedorders = ClosedOrder::orderBy('id', 'desc')->paginate(10);
+
+        return view('pages.closedOrders', compact('closedorders'));
+    }
+
     public function viewSingleOrder(Request $request, Order $order)
     {
         $order = Order::where('id', $request->id)->first();
@@ -139,8 +147,44 @@ class pagesController extends Controller
         return redirect()->route('orders')->with('message', 'Order successfuly deleted.');
     }
 
-    public function closeOrder()
+    public function deletecloseOrder(Request $request)
     {
+        $closedorder = ClosedOrder::where('id', $request->id)->first();
+
+        $closedorder->delete();
+        return redirect()->back()->with('message', 'Order successfuly deleted.');
+    }
+
+    public function closeOrder($id)
+    {
+        $orderData = Order::where('id', $id)->first();
+        //dd($orderData);
+        $closedorder = new ClosedOrder;
+    
+                $closedorder->customer_name = $orderData->customer_name;
+                $closedorder->customer_phone = $orderData->customer_phone;
+                $closedorder->customer_email = $orderData->customer_email;
+                $closedorder->customer_address = $orderData->customer_address;
+                $closedorder->customer_id = $orderData->customer_id;
+                $closedorder->product_name = $orderData->product_name;
+                $closedorder->product_category = $orderData->product_category;
+                $closedorder->product_id = $orderData->product_id;
+                $closedorder->product_price = $orderData->product_price;
+                $closedorder->product_image = $orderData->product_image;
+                $closedorder->product_quantity = $orderData->product_quantity;
+    
+                $closedorder->order_status = $orderData->order_status;
+                $closedorder->payment_status = $orderData->payment_status;
+                $closedorder->order_id = $orderData->order_number;
+    
+                $closedorder->save();
+    
+                $order_id = $orderData->id;
+                
+    
+                $order = Order::find($order_id);
+                
+                $order->delete();
         return redirect()->back()->with('message', 'Order Closed');
     }
 

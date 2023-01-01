@@ -30,10 +30,9 @@ class CartController extends Controller
             if($response->status && Auth()->user()){
 
                 $user =  auth()->user();
+                $username = $user->name;
                 $count = Cart::where('customer_name', $user->name)->count();
                 $data = $response->data;
-
-                
                 $userid = $user->user_id;
                 $orderData = Cart::where('customer_id', $userid)->get();
                 $item_in_cart = Cart::where('customer_id', $userid)->exists();
@@ -58,7 +57,7 @@ class CartController extends Controller
                         $order->product_quantity = $orderData->product_quantity;
             
                         $order->order_status = 'Processing';
-                        $order->payment_Status = 'Processing';
+                        $order->payment_Status = 'Paid';
                         $order->order_number = 'GUAS'.(random_int(0000001,9999999));
             
                         $order->save();
@@ -74,7 +73,7 @@ class CartController extends Controller
                 }
 
 
-                return view('pages.callback_page')->with(compact(['data', 'count']));
+                return view('pages.callback_page')->with(compact(['data', 'count', 'username']));
             }else{
                 return back()->withError($response->message);
             }

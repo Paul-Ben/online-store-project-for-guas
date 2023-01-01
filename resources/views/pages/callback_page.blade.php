@@ -14,29 +14,64 @@
 </div>
 @endif
 
-<div class="container print">
-    <div class="row">
-    <div class="header col-md-5 bg-secondary text-center m-4 p-3">
-    <h1>Payment Reciept</h1>
-</div>
-</div>
-<div class="col-6 m-5 ">
-
-    <table class="col-md-6 align-center">
-        <tbody>
+<div class="">
+<section id="do_action">
+    <div class="container">
+        <div>
+            {{-- <button class="btn btn-primary" onclick="printReceipt()">Print</button> --}}
+            <a class="btn btn-warning" onclick="PrintElem('elem')" href="#"> Print</a>
+        </div>
+        <div class="heading">
+            <h3 >Transaction Details</h3>
+            <p>Find the details of your transaction below.</p>
             
-            <tr><td>Payment ID:</td><td>{{$data->id}}</td></tr>
-            <tr><td>Payment Type:</td><td>{{$data->channel}}</td></tr>
-            <tr><td>Payment Reference:</td><td>{{$data->reference}}</td></tr>
-            <tr><td>Amount:</td><td>NGN {{$data->amount/100}}</td></tr>
-            <tr><td>Fees:</td><td>NGN {{$data->fees/100}}</td></tr>
-            <tr><td>Email:</td><td>{{$data->customer->email}}</td></tr>
-            <tr><td>Customer ID:</td><td>{{$data->customer->id}}</td></tr>
-            <tr><td>Name:</td><td>{{$data->customer->first_name}} </td></tr>
-            <tr><td>Status:</td><td>{{$data->status}}</td></tr>
-        </tbody>
-    </table>
-</div>
+        </div>
+        <div class="row" id="elem">
+            <div class="print" id="elem">
+            <div class="col-sm-6 m-9">
+                <div class="total_area">
+                    <ul id="elem">
+                        <li id="elem">Email:<span>{{$data->customer->email}}</span></li>
+                        <li id="elem">Name:<span>{{$username}} </span></li>
+                        <li id="elem">Payment Reference: <span>{{$data->reference}} </span></li>
+                        <li id="elem">Customer ID:<span>{{$data->customer->id}}</span></li>
+                        {{-- <li>Payment ID: <span>{{$data->id}} </span></li> --}}
+                        <li id="elem">Payment Type: <span>{{$data->channel}}</span></li>
+                        <li id="elem">Amount:<span>NGN {{$data->amount/100}}</span></li>
+                        {{-- <li>Fees:<span>NGN {{$data->fees/100}}</span></li> --}}
+                        <li id="elem">Status:<span>{{$data->status}}</span></li>
+                    </ul>
+                        
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
 </div>
 
+<script>
+    
+
+    
+function PrintElem(elem)
+{
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title  + '</h1>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+}
+
+</script>
 @endsection

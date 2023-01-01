@@ -56,9 +56,11 @@ Route::get('dashdata', [pagesController::class, 'dashdata'])->name('dashdata');
 Route::get('orders', [pagesController::class, 'orders'])->name('orders');
 Route::get('viewSingleOrder/{id}', [pagesController::class, 'viewSingleOrder'])->name('viewSingleOrder');
 Route::delete('deleteOrder/{id}', [pagesController::class, 'deleteOrder'])->name('deleteOrder');
+Route::delete('deletecloseOrder/{id}', [pagesController::class, 'deletecloseOrder'])->name('deletecloseOrder');
 Route::get('editOrder/{id}', [pagesController::class, 'editOrder'])->name('editOrder');
 Route::put('updateOrder/{id}', [pagesController::class, 'updateOrder'])->name('updateOrder');
 Route::post('closeOrder/{id}', [pagesController::class, 'closeOrder'])->name('closeOrder');
+Route::get('closedOrders', [pagesController::class, 'closedOrders'])->name('closedOrders');
 Route::get('myOrder', [pagesController::class, 'myOrder'])->name('myOrder');
 
 
