@@ -45,7 +45,7 @@ Route::get('categoryProducts/{id}', [pagesController::class, 'categoryProducts']
 
 // Backend routes
 // Logout route on the dashboard
-Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logouts');
 
 // Routes handling crud operations for products
 Route::resource('products', ProductController::class);

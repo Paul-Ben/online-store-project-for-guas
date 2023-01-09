@@ -113,7 +113,7 @@
                                     class="hidden-md-down">{{Auth::user()->name}} &nbsp;</span> </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a href="{{route('logout')}}">Logout</a>
+                                    <a href="{{route('logouts')}}">Logout</a>
                                 </li>
                             </ul>
                         </li>

@@ -98,7 +98,7 @@
 								<li><a href="#"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
 								<li><a href="{{route('myOrder')}}"><i class="fa fa-crosshairs"></i> My Orders</a></li>
 								<li><a href="{{route('showCart')}}"><i class="fa fa-shopping-cart"></i> Cart({{ $count }})</a></li>
-								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="{{route('logouts')}}"><i class="fa fa-lock"></i> Logout</a></li>
 								@endauth
 								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
