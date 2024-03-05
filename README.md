@@ -1,11 +1,11 @@
-#E-commerce web Application
+# E-commerce web Application
 
-###Author: Paul-Ben Ajene
+### Author: Paul-Ben Ajene
 
-##Description:
+## Description:
 This is a simple REST API CRUD application using Laravel (laravel version 10).
 
-#How to Use
+# How to Use
 - Clone the repository and navigate (cd) into it: `git clone https://github.dev/Paul-Ben/online-store-project-for-guas
 
 - copy contents of .env.example file to .env file.
