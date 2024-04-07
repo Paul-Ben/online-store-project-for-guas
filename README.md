@@ -15,6 +15,11 @@ This is an E-commerce web application built using Laravel (laravel version 9).
   - `DB_PASSWORD=your_password`
 - run the commands: `composer update` and `composer install`
 - Next run the command: `php artisan migrate`  to run the database migrations 
+- Next , you can seed the database by running this command : `php artisan db:seed`. This will add an admin user and a test user the credentials for both are:
+- - `Admin User Email: admin@email.com`
+    - `Password : password`
+- - `Test User  Email: test@emial.com`
+    - `Password : password`
 - Next run the command: `php artisan serve` to run the server to serve the project.
 - browser url is http://127.0.0.1:8000 to check that the application is running fine.
 - visit http://127.0.0.1:8000/register to register a new account
